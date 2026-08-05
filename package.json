@@ -1,6 +1,6 @@
 {
   "name": "youmo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "百度贴吧自动签到 GitHub Actions 脚本",
   "type": "module",
   "main": "src/index.ts",
