@@ -2,18 +2,18 @@
   "name": "tieba",
   "version": "1.0.0",
   "description": "百度贴吧自动签到 GitHub Actions 脚本",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
     "ro": "bun agent/bin",
     "build": "tsc",
-    "signin": "bun run src/index.ts",
-    "start": "bun run build && bun run dist/index.js",
-    "test": "bun run build && bun run dist/local-test.js",
+    "signin": "bun run src/index.ts --debug",
+    "signin:prod": "bun run src/index.ts",
     "dev": "bun run --watch src/index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chiupam/tieba.git"
+    "url": "git+https://github.com/biyuehu/youmo.git"
   },
   "keywords": [
     "github-actions",
@@ -25,9 +25,9 @@
   "author": "chiupam, ArimuraSena <i@arimuraromi.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chiupam/tieba/issues"
+    "url": "https://github.com/biyuehu/youmo/issues"
   },
-  "homepage": "https://github.com/chiupam/tieba#readme",
+  "homepage": "https://github.com/biyuehu/youmo#readme",
   "dependencies": {
     "@biomejs/biome": "^2.5.7",
     "axios": "^1.6.0"

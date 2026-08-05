@@ -1,20 +1,13 @@
-/**
- * 百度贴吧API服务
- * 包含与百度贴吧API通信的核心功能
- */
-
 import type { AxiosError } from 'axios'
 import axios from 'axios'
 import type { SignResult, TbsResult, TiebaList, UserInfo } from './types/apiService.types'
 import { generateDeviceId, toQueryString } from './utils'
 
-// 辅助函数：延时等待
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms))
 
-// 全局配置
-const MAX_RETRIES = 3 // 最大重试次数
-const RETRY_DELAY = 3000 // 重试延迟(ms)
-const RETRY_MULTIPLIER = 2 // 重试延迟倍数
+const MAX_RETRIES = 3
+const RETRY_DELAY = 3000
+const RETRY_MULTIPLIER = 2
 
 /**
  * 带重试机制的请求函数

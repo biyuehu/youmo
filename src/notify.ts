@@ -1,7 +1,3 @@
-/**
- * 通知模块 - 支持多种推送渠道发送脚本运行结果通知
- */
-
 import * as crypto from 'node:crypto'
 import type { AxiosResponse } from 'axios'
 import axios from 'axios'
@@ -242,7 +238,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
   const title = getNotifyTitle()
   let anySuccess = false
 
-  // Server酱通知
+  // Server 酱通知
   if (process.env.SERVERCHAN_KEY) {
     const result = await sendServerChan({
       key: process.env.SERVERCHAN_KEY,
@@ -252,7 +248,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
     if (result.success) anySuccess = true
   }
 
-  // Bark通知
+  // Bark 通知
   if (process.env.BARK_KEY) {
     const result = await sendBark({
       key: process.env.BARK_KEY,
@@ -262,7 +258,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
     if (result.success) anySuccess = true
   }
 
-  // Telegram通知
+  // Telegram 通知
   if (process.env.TG_BOT_TOKEN && process.env.TG_CHAT_ID) {
     const result = await sendTelegram({
       botToken: process.env.TG_BOT_TOKEN,
@@ -293,7 +289,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
     if (result.success) anySuccess = true
   }
 
-  // PushPlus通知
+  // PushPlus 通知
   if (process.env.PUSHPLUS_TOKEN) {
     const result = await sendPushPlus({
       token: process.env.PUSHPLUS_TOKEN,

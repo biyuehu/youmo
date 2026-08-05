@@ -1,7 +1,3 @@
-/**
- * 数据处理模块
- */
-
 import type { SignResult } from './types/apiService.types'
 import type { ProcessedSignResult, SignResultItem, SignResultSummary } from './types/dataProcessor.types'
 
@@ -11,12 +7,10 @@ import type { ProcessedSignResult, SignResultItem, SignResultSummary } from './t
  * @returns 处理后的签到结果
  */
 export function processSignResult(signResult: SignResult): ProcessedSignResult {
-  // 解析签到结果
   if (!signResult) {
     return { success: false, message: '签到结果为空', info: {} }
   }
 
-  // 处理不同的成功状态码
   if (signResult.no === 0 && signResult.data?.errmsg === 'success' && signResult.data?.errno === 0) {
     return {
       success: true,
@@ -102,7 +96,6 @@ export function summarizeResults(results: SignResultItem[]): SignResultSummary {
     }
   }
 
-  // 统计各种错误类型的数量
   results.forEach((result) => {
     if (result.success) {
       if (result.message === '已经签到过了') {
@@ -133,9 +126,7 @@ export function formatSummary(summary: SignResultSummary): string {
   text += `📌 已签: ${summary.alreadySignedCount} 个\n`
   text += `❌ 失败: ${summary.failedCount} 个`
 
-  // 添加失败原因统计
   if (summary.failedCount > 0) {
-    // 整理失败原因
     const errorMessageCount: Record<string, number> = {}
     summary.signResults.failed.forEach((item) => {
       if (!errorMessageCount[item.message]) {

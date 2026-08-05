@@ -32,6 +32,10 @@ jobs:
           BATCH_SIZE: ${{ secrets.BATCH_SIZE || '5' }}
           BATCH_INTERVAL: ${{ secrets.BATCH_INTERVAL || '1000' }}
           
+          # 贴吧过滤配置（可选）
+          FILTER_MODE: ${{ secrets.FILTER_MODE || '' }}
+          FILTER_LIST: ${{ secrets.FILTER_LIST || '' }}
+          
           # 重试配置
           MAX_RETRIES: ${{ secrets.MAX_RETRIES || '3' }}
           RETRY_INTERVAL: ${{ secrets.RETRY_INTERVAL || '5000' }}
@@ -46,7 +50,7 @@ jobs:
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           WECOM_KEY: ${{ secrets.WECOM_KEY }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        run: bun run signin
+        run: bun run sign
       
       - name: 处理结果
         if: always()

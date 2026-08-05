@@ -13,11 +13,10 @@ export interface TiebaInfo {
   forum_id: number
   forum_name: string
   is_sign: number
-  level_id: number
-  user_level: number
-  user_exp: number
-  cur_score: number
-  levelup_score: number
+  is_like: boolean
+  favo_type: number
+  user_level: string
+  user_exp: string
   [key: string]: any
 }
 
