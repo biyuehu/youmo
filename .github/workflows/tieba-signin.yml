@@ -17,13 +17,13 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v3
         
-      - name: 设置 Node.js 环境
-        uses: actions/setup-node@v3
+      - name: 设置Bun环境
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: '16'
+          bun-version: latest
           
       - name: 安装依赖
-        run: npm ci
+        run: bun install
         
       - name: 运行签到脚本
         env:
@@ -46,10 +46,10 @@ jobs:
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           WECOM_KEY: ${{ secrets.WECOM_KEY }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        run: node dist/index.js
+        run: bun run signin
       
       - name: 处理结果
         if: always()
         run: |
           echo "当前时间: $(date "+%Y/%m/%d %H:%M:%S")"
-          echo "工作流执行状态: ${{ job.status }}" 
+          echo "工作流执行状态: ${{ job.status }}"

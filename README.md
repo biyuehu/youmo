@@ -31,6 +31,7 @@
 首先需要获取百度的 BDUSS，这是百度贴吧 API 的登录凭证。
 
 获取方法：
+
 1. 登录百度贴吧网页版
 2. 打开浏览器开发者工具（F12）
 3. 切换到 "Application" 或 "应用" 标签
@@ -107,6 +108,7 @@
 > 💡 **提示**：您可以根据自己的需求配置一个或多个通知渠道。如果配置了多个渠道，脚本将向所有渠道发送通知。
 
 **设置方法**:
+
 - 在仓库中点击 Settings → Secrets and variables → Actions
 - 点击 "New repository secret" 添加以上对应的配置项
 
@@ -117,6 +119,7 @@
 ## 📈 查看签到结果
 
 签到完成后，可以在 Actions 的运行记录中查看详细的签到结果和统计信息，包括：
+
 - ✅ 签到成功数量与贴吧列表
 - 📌 已经签到的贴吧数量
 - ❌ 签到失败的贴吧及原因
@@ -129,17 +132,20 @@
 ### 本地测试准备工作
 
 1. 克隆此仓库到本地：
+
    ```bash
    git clone https://github.com/chiupam/tieba.git
    cd tieba
    ```
 
 2. 安装依赖：
+
    ```bash
    npm install
    ```
 
 3. 创建`.env`文件，用于配置本地测试环境变量：
+
    ```bash
    cp .env.example .env
    ```
@@ -149,6 +155,7 @@
 ### 测试命令
 
 运行本地测试：
+
 ```bash
 npm test
 ```
@@ -156,6 +163,7 @@ npm test
 这个命令会先编译TypeScript代码，然后执行local-test.js文件。
 
 > 💡 **提示**：
+>
 > - 要测试BDUSS失效的情况，可以在`.env`文件中填写错误的BDUSS值
 > - 本地测试默认使用更小的批次大小和间隔时间
 
@@ -193,7 +201,7 @@ npm run dev
 
 ## 📁 项目结构
 
-```
+```txt
 tieba/
 ├── .github/                          # GitHub相关配置
 │   └── workflows/                    # GitHub Actions工作流

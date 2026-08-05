@@ -65,4 +65,6 @@ $RECYCLE.BIN/
 .parcel-cache
 
 # TypeScript build output
-*.tsbuildinfo 
+*.tsbuildinfo
+agent
+.env

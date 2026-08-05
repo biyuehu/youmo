@@ -1,6 +1,6 @@
 export interface DateFormatOptions {
-  timeZone: string;
-  utcOffset: string;
+  timeZone: string
+  utcOffset: string
 }
 
-export type DateFormatTemplateFunction = (date: Date, options?: DateFormatOptions) => string; 
+export type DateFormatTemplateFunction = (date: Date, options?: DateFormatOptions) => string
