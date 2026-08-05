@@ -42,6 +42,8 @@ jobs:
           
           # 通知相关环境变量
           ENABLE_NOTIFY: ${{ secrets.ENABLE_NOTIFY || 'false' }}
+          MAKI_URL: ${{ secrets.MAKI_URL }}
+          MAKI_TOKEN: ${{ secrets.MAKI_TOKEN }}
           SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
           BARK_KEY: ${{ secrets.BARK_KEY }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}

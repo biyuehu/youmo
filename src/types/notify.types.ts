@@ -10,6 +10,13 @@ export interface NotifyResult {
   channel?: string
 }
 
+export interface MakiOptions {
+  url: string
+  token: string
+  title: string
+  content: string
+}
+
 export interface ServerChanOptions {
   key: string
   title?: string

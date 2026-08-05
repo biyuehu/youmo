@@ -4,6 +4,7 @@ import axios from 'axios'
 import {
   type BarkOptions,
   type DingTalkOptions,
+  type MakiOptions,
   type NotifyResult,
   type PushPlusOptions,
   type ServerChanOptions,
@@ -30,6 +31,35 @@ function handleNotifyResult(platform: string, response: AxiosResponse | undefine
     console.log(`✅ ${platform}通知发送成功`)
   } else {
     console.log(`⚠️ ${platform}通知发送失败: ${response?.statusText || '未知错误'}`)
+  }
+}
+
+/**
+ * Maki酱通知
+ * @param options - Maki酱配置选项
+ * @returns 发送结果
+ */
+export async function sendMaki(options: MakiOptions): Promise<NotifyResult> {
+  const { url, token, title, content } = options
+  if (!url || !token) return { success: false, message: 'Maki酱配置不完整', channel: 'Maki' }
+
+  try {
+    const apiUrl = `${url.replace(/\/$/, '')}/maki`
+    const response = await axios.post(apiUrl, {
+      token,
+      title,
+      content
+    })
+    if (response.data?.code === 0) {
+      console.log(`✅ Maki酱通知发送成功`)
+      return { success: true, message: 'Maki酱通知发送成功', channel: 'Maki' }
+    }
+    console.log(`⚠️ Maki酱通知发送失败: ${response.data?.message || '未知错误'}`)
+    return { success: false, message: response.data?.message || '未知错误', channel: 'Maki' }
+  } catch (error) {
+    const err = error as Error
+    console.error(`❌ Maki酱通知发送失败: ${err.message}`)
+    return { success: false, message: err.message, channel: 'Maki' }
   }
 }
 
@@ -237,6 +267,17 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   const title = getNotifyTitle()
   let anySuccess = false
+
+  // Maki酱通知
+  if (process.env.MAKI_URL && process.env.MAKI_TOKEN) {
+    const result = await sendMaki({
+      url: process.env.MAKI_URL,
+      token: process.env.MAKI_TOKEN,
+      title: title,
+      content: summary
+    })
+    if (result.success) anySuccess = true
+  }
 
   // Server 酱通知
   if (process.env.SERVERCHAN_KEY) {
