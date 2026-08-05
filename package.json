@@ -9,7 +9,7 @@
     "build": "tsc",
     "signin": "bun run src/index.ts --debug",
     "signin:prod": "bun run src/index.ts",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts --debug"
   },
   "repository": {
     "type": "git",
