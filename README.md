@@ -3,7 +3,7 @@
 
 # YOUMO · 贴吧自动签到
 
-[![百度贴吧](https://img.shields.io/badge/百度贴吧-passing-success.svg?style=flat-square&logo=baidu&logoWidth=20&logoColor=white)](https://github.com/biyuehu/youmo/actions)
+[![YOUMO](https://img.shields.io/badge/YOUMO-passing-success.svg?style=flat-square&logo=baidu&logoWidth=20&logoColor=white)](https://github.com/biyuehu/youmo/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Bun](https://img.shields.io/badge/Bun-latest-fbf0df.svg?style=flat-square&logo=bun)](https://bun.sh/)
 [![GitHub stars](https://img.shields.io/github/stars/biyuehu/youmo?style=flat-square&logo=github)](https://github.com/biyuehu/youmo/stargazers)

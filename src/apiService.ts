@@ -9,15 +9,6 @@ const MAX_RETRIES = 3
 const RETRY_DELAY = 3000
 const RETRY_MULTIPLIER = 2
 
-/**
- * 带重试机制的请求函数
- * @param requestFn - 请求函数
- * @param operationName - 操作名称
- * @param maxRetries - 最大重试次数
- * @param initialDelay - 初始延迟(ms)
- * @param delayMultiplier - 延迟倍数
- * @returns 请求结果
- */
 async function withRetry<T>(
   requestFn: () => Promise<T>,
   operationName: string,
@@ -36,7 +27,7 @@ async function withRetry<T>(
 
       const axiosError = error as AxiosError
 
-      // 429错误特殊处理
+      // 429 错误特殊处理
       const isRateLimited = axiosError.response && axiosError.response.status === 429
 
       if (
