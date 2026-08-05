@@ -16,32 +16,31 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v3
-        
+
       - name: 设置Bun环境
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
-          
+
       - name: 安装依赖
         run: bun install
-        
+
       - name: 运行签到脚本
         env:
           # 基础配置
           BDUSS: ${{ secrets.BDUSS }}
           BATCH_SIZE: ${{ secrets.BATCH_SIZE || '5' }}
           BATCH_INTERVAL: ${{ secrets.BATCH_INTERVAL || '1000' }}
-          
+
           # 贴吧过滤配置（可选）
           FILTER_MODE: ${{ secrets.FILTER_MODE || '' }}
           FILTER_LIST: ${{ secrets.FILTER_LIST || '' }}
-          
+
           # 重试配置
           MAX_RETRIES: ${{ secrets.MAX_RETRIES || '3' }}
           RETRY_INTERVAL: ${{ secrets.RETRY_INTERVAL || '5000' }}
-          
-          # 通知相关环境变量
-          ENABLE_NOTIFY: ${{ secrets.ENABLE_NOTIFY || 'false' }}
+
+          # 通知相关环境变量（配置任意渠道即可自动启用通知）
           MAKI_URL: ${{ secrets.MAKI_URL }}
           MAKI_TOKEN: ${{ secrets.MAKI_TOKEN }}
           SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
@@ -53,7 +52,7 @@ jobs:
           WECOM_KEY: ${{ secrets.WECOM_KEY }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
         run: bun run sign
-      
+
       - name: 处理结果
         if: always()
         run: |

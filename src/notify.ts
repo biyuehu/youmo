@@ -267,9 +267,11 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   const title = getNotifyTitle()
   let anySuccess = false
+  let enabled = false
 
   // Maki酱通知
   if (process.env.MAKI_URL && process.env.MAKI_TOKEN) {
+    enabled = true
     const result = await sendMaki({
       url: process.env.MAKI_URL,
       token: process.env.MAKI_TOKEN,
@@ -281,6 +283,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   // Server 酱通知
   if (process.env.SERVERCHAN_KEY) {
+    enabled = true
     const result = await sendServerChan({
       key: process.env.SERVERCHAN_KEY,
       title: title,
@@ -291,6 +294,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   // Bark 通知
   if (process.env.BARK_KEY) {
+    enabled = true
     const result = await sendBark({
       key: process.env.BARK_KEY,
       title: title,
@@ -301,6 +305,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   // Telegram 通知
   if (process.env.TG_BOT_TOKEN && process.env.TG_CHAT_ID) {
+    enabled = true
     const result = await sendTelegram({
       botToken: process.env.TG_BOT_TOKEN,
       chatId: process.env.TG_CHAT_ID,
@@ -311,6 +316,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   // 钉钉通知
   if (process.env.DINGTALK_WEBHOOK) {
+    enabled = true
     const result = await sendDingTalk({
       webhook: process.env.DINGTALK_WEBHOOK,
       secret: process.env.DINGTALK_SECRET,
@@ -322,6 +328,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   // 企业微信通知
   if (process.env.WECOM_KEY) {
+    enabled = true
     const result = await sendWecom({
       key: process.env.WECOM_KEY,
       title: title,
@@ -332,6 +339,7 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   // PushPlus 通知
   if (process.env.PUSHPLUS_TOKEN) {
+    enabled = true
     const result = await sendPushPlus({
       token: process.env.PUSHPLUS_TOKEN,
       title: title,
@@ -342,8 +350,10 @@ export async function sendNotification(summary: string): Promise<boolean> {
 
   if (anySuccess) {
     console.log('✅ 通知发送完成')
-  } else {
+  } else if (enabled) {
     console.log('⚠️ 没有通知被发送，请检查通知配置')
+  } else {
+    console.log('ℹ️ 未配置任何通知渠道，跳过通知发送')
   }
 
   return anySuccess

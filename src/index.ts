@@ -349,20 +349,11 @@ try {
   console.log(summaryText)
   console.log('==========================================')
 
-  // 5. 发送通知 - 只有在有贴吧签到失败时才发送（DEBUG 模式下不发送）
+  // 5. 发送通知 - 只要配置了通知渠道就发送（DEBUG 模式下不发送）
   if (isDebug) {
     console.log('🐛 [DEBUG] 调试模式，跳过通知发送')
   } else {
-    const shouldNotify = process.env.ENABLE_NOTIFY === 'true' && failedCount > 0
-
-    if (shouldNotify) {
-      console.log('▶️ 步骤5: 发送通知 (由于签到失败而触发)')
-      await sendNotification(summaryText)
-    } else if (process.env.ENABLE_NOTIFY === 'true') {
-      console.log('ℹ️ 签到全部成功，跳过通知发送')
-    } else {
-      console.log('ℹ️ 通知功能未启用，跳过通知发送')
-    }
+    await sendNotification(summaryText)
   }
 } catch (error) {
   console.error('==========================================')
@@ -374,19 +365,13 @@ try {
   }
   console.error('==========================================')
 
-  // 发送错误通知 - BDUSS失效时一定要通知（DEBUG 模式下不发送）
+  // 发送错误通知（DEBUG 模式下不发送）
   if (!isDebug) {
-    const errMsg = (error as Error).message
-    const isBdussError = errMsg.includes('BDUSS') || errMsg.includes('登录')
-    const shouldNotify = process.env.ENABLE_NOTIFY === 'true' || isBdussError
-
-    if (shouldNotify) {
-      try {
-        console.log('▶️ 步骤5: 发送通知 (由于BDUSS失效或严重错误触发)')
-        await sendNotification(`❌ 签到脚本执行失败!\n\n错误信息: ${(error as Error).message}`)
-      } catch (e) {
-        console.error(`❌ 发送错误通知失败: ${(e as Error).message}`)
-      }
+    try {
+      console.log('▶️ 步骤5: 发送错误通知...')
+      await sendNotification(`❌ 签到脚本执行失败!\n\n错误信息: ${(error as Error).message}`)
+    } catch (e) {
+      console.error(`❌ 发送错误通知失败: ${(e as Error).message}`)
     }
   } else {
     console.log('🐛 [DEBUG] 调试模式，跳过错误通知发送')

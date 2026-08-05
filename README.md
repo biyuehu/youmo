@@ -81,11 +81,10 @@
 | `BATCH_INTERVAL` | ❌ | 批次之间的等待时间(毫秒) | 1000 |
 | `MAX_RETRIES` | ❌ | 签到失败时的最大重试次数 | 3 |
 | `RETRY_INTERVAL` | ❌ | 重试之间的等待时间(毫秒) | 5000 |
-| `ENABLE_NOTIFY` | ❌ | 是否启用通知推送功能 | false |
 
 **Notification：**
 
-启用通知推送功能后（`ENABLE_NOTIFY=true`），可以配置以下通知渠道（至少需要配置一个）：
+可选择性配置以下通知渠道，支持多个：
 
 | 变量名 | 说明 | 参考文档 |
 | ----- | ---- | ------- |
@@ -100,7 +99,7 @@
 | `WECOM_KEY` | 企业微信机器人的 WebHook Key | [企业微信机器人文档](https://developer.work.weixin.qq.com/document/path/91770) |
 | `PUSHPLUS_TOKEN` | PushPlus 推送 Token | [PushPlus文档](https://www.pushplus.plus/) |
 
-**Maki酱：**基于强大的 [KotoriBot](https://kotori.js.org)，支持第三方QQ、官方QQ等多种方式，并且开源，强烈推荐使用.
+**Maki酱**：基于强大的 [KotoriBot](https://kotori.js.org)，支持第三方QQ、官方QQ等多种方式，并且开源，强烈推荐使用.
 
 > [!TIP]
 > 你可以根据自己的需求配置一个或多个通知渠道. 如果配置了多个渠道，脚本将向所有渠道发送通知.
@@ -166,10 +165,8 @@
 
 本项目的通知逻辑为：
 
-1. 只有当以下情况时才会发送通知：
-   - **贴吧签到失败**且**开启了通知功能**时.
-   - **BDUSS失效**且**开启了通知功能**时.
-2. 当所有贴吧签到成功时，即使开启了通知功能也不会发送通知.
+1. 只要配置了任一通知渠道，无论签到成功或失败都会发送通知
+2. 脚本执行出错时也会发送错误通知
 
 > [!TIP]
 > 本地测试时BDUSS的有效性会直接影响到结果，如需测试不同场景，可以修改`.env`文件中的BDUSS值.
