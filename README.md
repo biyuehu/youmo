@@ -10,7 +10,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/biyuehu/youmo?style=flat-square&logo=github)](https://github.com/biyuehu/youmo/network/members)
 [![License](https://img.shields.io/github/license/biyuehu/youmo?style=flat-square)](LICENSE)
 
-还在被黄牌蛆歧视？你需要这个工具！一个基于 GitHub Actions 的贴吧自动签到工具——无论你是神友视奸、带友转正还是引流二刺螈、皮套狗、二游魔怔痴、迷你世界钓鱼佬、反二吧复制粘贴巨硬、页游、瞎骂蛆、g笑傻缺、支黑、魂斗罗高手、网哲、狗粉丝，它都能让你躺在出租屋就迅速当上人人羡慕的老资历！
+还在被黄牌蛆歧视？还在因为是引流狗的事实自卑？还在被老东西踩头？还在因玩网太浅备受压迫？你需要这个工具！一个基于 GitHub Actions 的贴吧自动签到工具——无论你是神友视奸、带友转正、粉转带还是引流二刺螈、皮套狗、二游魔怔痴、迷你世界钓鱼佬、反二吧复制粘贴巨硬、页游、瞎骂蛆、做题蠢蛆、g笑傻缺、幽默支黑、魂斗罗高手、网哲、狗粉丝，它都能让你躺在出租屋就迅速当上人人羡慕的冲浪老资历！
 
 </div>
 
@@ -92,13 +92,13 @@
 | `MAKI_URL` | Maki酱服务地址，如 `http://127.0.0.1:720` | **[[Maki酱详细信息](https://github.com/kotorijs/maki-chan)]** |
 | `MAKI_TOKEN` | Maki酱认证 Token | 同上 |
 | `SERVERCHAN_KEY` | Server酱的推送密钥 | [Server酱文档](https://sct.ftqq.com/) |
-| `BARK_KEY` | Bark推送密钥或完整URL | [Bark文档](https://github.com/Finb/Bark) |
-| `TG_BOT_TOKEN` | Telegram机器人Token | [Telegram Bot API](https://core.telegram.org/bots/api) |
-| `TG_CHAT_ID` | Telegram接收消息的用户或群组ID | [获取Chat ID教程](https://core.telegram.org/bots/features#chat-id) |
+| `BARK_KEY` | Bark 推送密钥或完整URL | [Bark文档](https://github.com/Finb/Bark) |
+| `TG_BOT_TOKEN` | Telegram 机器人Token | [Telegram Bot API](https://core.telegram.org/bots/api) |
+| `TG_CHAT_ID` | Telegram 接收消息的用户或群组ID | [获取Chat ID教程](https://core.telegram.org/bots/features#chat-id) |
 | `DINGTALK_WEBHOOK` | 钉钉机器人的Webhook URL | [钉钉自定义机器人文档](https://open.dingtalk.com/document/robots/custom-robot-access) |
-| `DINGTALK_SECRET` | 钉钉机器人的安全密钥(可选) | 同上 |
-| `WECOM_KEY` | 企业微信机器人的WebHook Key | [企业微信机器人文档](https://developer.work.weixin.qq.com/document/path/91770) |
-| `PUSHPLUS_TOKEN` | PushPlus推送Token | [PushPlus文档](https://www.pushplus.plus/) |
+| `DINGTALK_SECRET` | 钉钉机器人的安全密钥（可选） | 同上 |
+| `WECOM_KEY` | 企业微信机器人的 WebHook Key | [企业微信机器人文档](https://developer.work.weixin.qq.com/document/path/91770) |
+| `PUSHPLUS_TOKEN` | PushPlus 推送 Token | [PushPlus文档](https://www.pushplus.plus/) |
 
 **Maki酱：**基于强大的 [KotoriBot](https://kotori.js.org)，支持第三方QQ、官方QQ等多种方式，并且开源，强烈推荐使用.
 
