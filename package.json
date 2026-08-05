@@ -20,7 +20,8 @@
     "automation",
     "baidu-tieba",
     "tieba",
-    "sign-in"
+    "sign-in",
+    "youmo"
   ],
   "author": "chiupam, ArimuraSena <i@arimuraromi.com>",
   "license": "MIT",
