@@ -68,7 +68,7 @@
 
 ### Configuration
 
-本项目使用环境变量进行配置，可以在GitHub Secrets中设置以下变量：
+本项目使用环境变量进行配置，可以在 GitHub Secrets 中设置以下变量：
 
 **Base：**
 

@@ -1,46 +1,42 @@
-name: 百度贴吧自动签到
+name: Youmo Signin
 
 on:
   schedule:
-    - cron: '0 2,3 * * *'  # 每天 UTC 2:00 3:00 运行 (北京时间 10:00 11:00)
-  workflow_dispatch:     # 支持手动触发
+    - cron: '0 2,3 * * *'  # UTC 2:00 3:00 (Beijing 10:00 11:00)
+  workflow_dispatch:
 
 jobs:
   signin:
     runs-on: ubuntu-latest
-    timeout-minutes: 15   # 设置超时限制
+    timeout-minutes: 15
 
     env:
-      TZ: Asia/Shanghai  # 设置时区为中国标准时间
+      TZ: Asia/Shanghai
 
     steps:
-      - name: 检出代码
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: 设置Bun环境
+      - name: Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
 
-      - name: 安装依赖
+      - name: Install Dependencies
         run: bun install
 
-      - name: 运行签到脚本
+      - name: Run Signin Script
         env:
-          # 基础配置
           BDUSS: ${{ secrets.BDUSS }}
           BATCH_SIZE: ${{ secrets.BATCH_SIZE || '5' }}
           BATCH_INTERVAL: ${{ secrets.BATCH_INTERVAL || '1000' }}
 
-          # 贴吧过滤配置（可选）
           FILTER_MODE: ${{ secrets.FILTER_MODE || '' }}
           FILTER_LIST: ${{ secrets.FILTER_LIST || '' }}
 
-          # 重试配置
           MAX_RETRIES: ${{ secrets.MAX_RETRIES || '3' }}
           RETRY_INTERVAL: ${{ secrets.RETRY_INTERVAL || '5000' }}
 
-          # 通知相关环境变量（配置任意渠道即可自动启用通知）
           MAKI_URL: ${{ secrets.MAKI_URL }}
           MAKI_TOKEN: ${{ secrets.MAKI_TOKEN }}
           SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
@@ -51,10 +47,10 @@ jobs:
           DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
           WECOM_KEY: ${{ secrets.WECOM_KEY }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-        run: bun run sign
+        run: bun run signin:prod
 
-      - name: 处理结果
+      - name: Result
         if: always()
         run: |
-          echo "当前时间: $(date "+%Y/%m/%d %H:%M:%S")"
-          echo "工作流执行状态: ${{ job.status }}"
+          echo "Current time: $(date "+%Y/%m/%d %H:%M:%S")"
+          echo "Workflow execution status: ${{ job.status }}"
