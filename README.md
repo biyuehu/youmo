@@ -10,7 +10,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/biyuehu/youmo?style=flat-square&logo=github)](https://github.com/biyuehu/youmo/network/members)
 [![License](https://img.shields.io/github/license/biyuehu/youmo?style=flat-square)](LICENSE)
 
-还在被黄牌蛆歧视，你需要这个工具，一个基于 GitHub Actions 的贴吧自动签到工具——无论你是神友视奸、带友转正还是引流二刺螈、皮套狗、二游魔怔痴、迷你世界钓鱼佬、反二吧复制粘贴巨硬、页游、瞎骂蛆、g笑傻缺、支黑、魂斗罗高手、网哲、狗粉丝，它都能让你躺在出租屋就迅速当上人人羡慕的老资历！
+还在被黄牌蛆歧视？你需要这个工具！一个基于 GitHub Actions 的贴吧自动签到工具——无论你是神友视奸、带友转正还是引流二刺螈、皮套狗、二游魔怔痴、迷你世界钓鱼佬、反二吧复制粘贴巨硬、页游、瞎骂蛆、g笑傻缺、支黑、魂斗罗高手、网哲、狗粉丝，它都能让你躺在出租屋就迅速当上人人羡慕的老资历！
 
 </div>
 
